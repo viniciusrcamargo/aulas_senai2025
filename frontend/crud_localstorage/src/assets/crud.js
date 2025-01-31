@@ -1,0 +1,1 @@
+const formContribuinte = document.getElementById('form-contribuinte');
