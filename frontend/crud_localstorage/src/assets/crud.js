@@ -34,7 +34,7 @@ function addContribuinteToDOM(contribuinte, index) {
         <button onclick="editContribuinte(${index})">Editar</button>
         <button onclick="deleteContribuinte(${index})">Excluir</button>
       </div>
-    `;
+    ;
     listaContribuinte.appendChild(li);
   }
   
