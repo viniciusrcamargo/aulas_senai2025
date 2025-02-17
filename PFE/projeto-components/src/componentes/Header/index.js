@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 // Definindo o componente estilizado para o cabeçalho
 const Header = styled.header`
-  background-color: #282c34;
+  background-color: #282828;
   padding: 20px;
   color: white;
   text-align: center;
