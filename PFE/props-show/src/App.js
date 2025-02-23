@@ -15,7 +15,7 @@ function App() {
      {produtos.map((produto) => (
         <Produto nome={produto.nome} preco={produto.preco} />
       ))}
-    </div>
+    </section>
  );
 }
 
