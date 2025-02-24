@@ -10,7 +10,7 @@ function App() {
   ];
 
   return (
-    <section>
+    <div>
      <h1>Lista Produtos</h1>
      {produtos.map((produto) => (
         <Produto nome={produto.nome} preco={produto.preco} />
