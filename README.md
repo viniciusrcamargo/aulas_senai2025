@@ -1,6 +1,6 @@
 # Projetos Senai - React com HTML e CSS
 
-##Olá queridos estudantes, aqui vocês encontraram os projetos que foram aplicados em sala de aula
+Olá queridos estudantes, aqui vocês encontraram os projetos que foram aplicados em sala de aula
 
 ## 1. Configurar o Projeto React
 
