@@ -7,7 +7,7 @@ import BoasVindas from './componentes/BoasVindas';
 
 function App() {
   return (
-      <Router>
+      <router>
         <Routes>
           <Route path='/' element={<Formulario />}/>
           <Route path='/success' element={<BoasVindas />}/>
