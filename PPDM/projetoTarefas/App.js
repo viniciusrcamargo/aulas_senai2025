@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Topo from './src/componentes/Topo';
 import Tarefa from './src/componentes/Tarefa';
 
 export default function App() {
   return (
     <> 
-      <Topo />
       <View style={estilos.container}>
+        <Topo />
         <Tarefa />
       </View>
     </>
@@ -15,9 +15,7 @@ export default function App() {
 
 const estilos = StyleSheet.create({
   container: {
+    flexDirection: 'column',
     backgroundColor: '#fff',
-    marginLeft: -410,
-    marginTop: 80,
-    width: '100%'
   },
 });
