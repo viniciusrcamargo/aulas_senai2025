@@ -1,7 +1,6 @@
 import { View, Image, Text, FlatList, StyleSheet} from 'react-native';
 import tarefas from '../../mocks/Tarefas';
 
-console.log(tarefas); // Adicione esta linha para verificar os dados
 
 export default function Lista(){
     const renderizarItem = ({item}) => (
@@ -15,11 +14,12 @@ export default function Lista(){
     );
 
     return(
-        <View style={estilos.container}>
-            <FlatList 
-                data={tarefas}//dados
-                renderItem={renderizarItem}//função que renderiza
+        <View >
+            <FlatList
+                data={tarefas}
+                renderItem={renderizarItem}
                 keyExtractor={item => item.id}
+                style={{ width: '100%' }} // Garante que a lista ocupe a largura do container
             />
         </View>
     );
@@ -27,32 +27,34 @@ export default function Lista(){
 
 const estilos = StyleSheet.create({
     container:{
-        flex: 1,
+        // flex: 1,
         backgroundColor: '#fff',
-        justifyContent: 'center',
-        margin: 10,
-        marginTop: 15,
+        // padding: 20,
+        marginTop: 20,
+        // maxWidth: 600, // Limita a largura máxima na web para melhor leitura
+        // alignSelf: 'center', // Centraliza o container horizontalmente em telas maiores
     },
     item:{
         backgroundColor: '#9BF2EA',
-        padding: 20,
-        marginTop: 5,
-        marginVertical: 8,
+        padding: 15,
+        // marginLeft: 0,
         borderRadius: 10,
+        margin: 8
     },
     titulo:{
-        fontSize: 24,
+        fontSize: 18, // Ajustei o tamanho da fonte para web
         marginLeft: 10,
     },
     tituloImagem:{
         flexDirection: 'row',
+        alignItems: 'center', // Alinha verticalmente a imagem e o texto
     },
     info:{
-        flexDirection: 'column',
-        fontSize: 16
+        fontSize: 14, // Ajustei o tamanho da fonte para web
+        marginTop: 5,
     },
     imagem:{
-        width: 40,
-        height: 40,
+        width: 30, // Ajustei o tamanho da imagem para web
+        height: 30,
     }
 });
