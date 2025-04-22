@@ -15,7 +15,7 @@ export default function App() {
 
 const estilos = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     backgroundColor: '#fff',
   },
 });
