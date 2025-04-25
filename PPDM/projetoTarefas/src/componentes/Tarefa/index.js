@@ -1,5 +1,5 @@
 import { View, Image, Text, FlatList, StyleSheet} from 'react-native';
-import tarefas from '../../mocks/Tarefas';
+import dados from '../../mocks/Tarefas';
 
 
 export default function Lista(){
@@ -16,7 +16,7 @@ export default function Lista(){
     return(
         <View >
             <FlatList
-                data={tarefas}
+                data={dados}
                 renderItem={renderizarItem}
                 keyExtractor={item => item.id}
                 style={{ width: '100%' }} // Garante que a lista ocupe a largura do container
