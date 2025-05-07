@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import {format} from 'date-fns';
 import {ptBR} from 'date-fns/locale';
+import {Link} from 'react-router-dom'
 
 
 export default function Dashboard(){
@@ -20,8 +21,8 @@ export default function Dashboard(){
                                     Movimentações
                                 </button>
                                 <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Adicionar</a></li>
-                                    <li><a className="dropdown-item" href="#">Relatório</a></li>
+                                    <li><Link className="dropdown-item" to="/addmovimentacao">Adicionar</Link></li>
+                                    <li><Link className="dropdown-item" to="#">Relatório</Link></li>
                                 </ul>
                            </div>
                            <DatePicker 
