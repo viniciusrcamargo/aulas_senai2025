@@ -25,7 +25,7 @@ export default function Login(){
                             <label htmlFor="senha" className="form-label">Senha</label>
                             <input type="password" className="form-control" id="senha" name="senha" placeholder="Insira sua Senha"/>
                         </div>
-                        <Link className="btn btn-primary" to="/">Login</Link><br/>
+                        <Link className="btn btn-primary" to="/dashboard">Login</Link><br/>
                         <Link className="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/registrar">Cadastrar</Link>
                     </form>
                 </Moldura>
