@@ -22,7 +22,7 @@ export default function Dashboard(){
                                 </button>
                                 <ul className="dropdown-menu">
                                     <li><Link className="dropdown-item" to="/addmovimentacao">Adicionar</Link></li>
-                                    <li><Link className="dropdown-item" to="#">Relatório</Link></li>
+                                    <li><Link className="dropdown-item" to="/relatoriomovimentacao">Relatório</Link></li>
                                 </ul>
                            </div>
                            <DatePicker 
