@@ -77,7 +77,7 @@ export default function Register(){
                         </div>
                         <div className="mb-3">
                             <label htmlFor="confirmaSenha" className="form-label">Confirme a Senha</label>
-                            <input type="password" className="form-control" id="confirmaSenha" name="confiirmaSenha" placeholder="Insira sua Senha" value={confSenha} onChange={(e) => setConfSenha(e.target.value)} required/>
+                            <input type="password" className="form-control" id="confirmaSenha" name="confirmaSenha" placeholder="Insira sua Senha" value={confSenha} onChange={(e) => setConfSenha(e.target.value)} required/>
                         </div>
                         {erro && <div className="alert alert-danger" role="alert">{erro}</div>}
                         <button className="btn btn-primary" type="submit">
