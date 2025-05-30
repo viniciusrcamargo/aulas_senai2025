@@ -67,10 +67,115 @@ export default function RelatorioMovimentacoes(){
         carregarMovimentacoes();
     },[]);
 
-    const mudarInput = (e) =>{
+    const hadleInputChange = (e) =>{
         const {name, value} = e.target;
         setFormDados(prev => ({...prev, [name]: value}));
     }
+    
+    const executaEditar = (movimentacao) => {
+        setMovimentacaoEmEdicao(movimentacao);
+        const formatData = movimentacao.data_movimentacao ? new Date(movimentacao.data_movimentacao).toISOString().split('T')[0] : '';
+
+        setFormDados({
+            id: movimentacao.id,
+            data_movimentacao: formatData,
+            descricao: movimentacao.descricao,
+            valor: movimentacao.valor.toString(),
+            tipo: movimentacao.tipo,
+            id_usuario: movimentacao.id_usuario,
+            id_tipo_pagamento: movimentacao.id_tipo_pagamento
+        });
+        setEditErro(null);
+        setShowEditModal(true);
+    }
+
+    const handleSalvarEdicao = async (e) =>{
+        e.preventDefault();
+        if(!movimentacaoEmEdicao) return;
+
+        setIsUpdating(true);
+        setEditErro(null);
+
+        try {
+            const carregar ={
+                descricao: formDados.descricao,
+                valor: parseFloat(formDados.valor),
+                tipo: formDados.tipo,
+                data_movimentacao: formDados.data_movimentacao,
+                id_usuario: formDados.id_usuario,
+                id_tipo_pagamento: formDados.id_tipo_pagamento
+            }
+
+            const movimentacaoAtualizada = await atualizarMovimentacaoApi(movimentacaoEmEdicao.id, carregar);
+
+            setMovimentacoes(prevMovimentacoes => prevMovimentacoes.map(mov =>
+                mov.id === movimentacaoAtualizada.id ? movimentacaoAtualizada : mov
+            ))
+            setShowEditModal(false);
+            setMovimentacaoEmEdicao(null);
+            window.location.reload();//reload na página
+        } catch (erro) {
+            console.log('Erro ao salvar edição', erro);
+            setEditErro('Falha ao salvar edição' + erro);
+        }finally{
+            setIsUpdating(false);
+        }
+    }
+
+    const handleCancelarEdicao = () =>{
+        setShowEditModal(false);
+        setMovimentacaoEmEdicao(null);
+        setEditErro(null);
+    }
+
+    const executaExcluir = async (idMovimentacao) =>{
+        if(window.confirm(`Tem certeza que deseja excluir a movimentação ID ${idMovimentacao}?`)){
+           try {
+            const resposta = await fetch(`http://localhost:3000/movimentacoes/excluirMovimentacao/${idMovimentacao}`,{
+                method: 'DELETE'
+            });
+            setMovimentacoes(movimentacoes.filter(mov =>mov.id !== idMovimentacao));
+            alert(`Movimentação ID ${idMovimentacao} excluida com sucesso!`);
+           } catch (erro) {
+                console.error(`Erro ao excluir id ${idMovimentacao} `, erro);
+                alert(`Falha ao excluir movimentação: ${erro.message}`);
+           } 
+        }
+    }
+
+    if(loading){
+        return(
+            <div className="container mt-4 text-center">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Carregando...</span>
+                </div>
+                <p>Carregando Movimentações...</p>
+            </div>
+        )
+    }
+
+     if(erro){
+        return(
+            <div className="container mt-4 text-center">
+                <div className="alert alert-danger" role="alert">
+                    {erro}
+                </div>
+            </div>
+        )
+    }
+
+    if(movimentacoes.length === 0 && !loading){
+        return(
+            <div className="container mt-4">
+                <div className="alert alert-info" role="alert"> 
+                    Nenhuma movimentação encontrada
+                </div>
+            </div>
+        )
+    }
+
+
+
     return(
         <div className="container mt-5">
             <h2 className="mb-4 text-center">Relatório de Movimentações
