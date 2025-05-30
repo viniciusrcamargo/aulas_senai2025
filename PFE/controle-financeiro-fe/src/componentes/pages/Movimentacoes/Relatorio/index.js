@@ -194,22 +194,35 @@ export default function RelatorioMovimentacoes(){
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>10/05/2025</td>
-                            <td>Mesada</td>
-                            <td>R$ 1500,00</td>
-                            <td>Entrada</td>
-                            <td>Erik</td>
-                            <td>PIX</td>
-                            <td>
-                                <button title="Editar" className="btn btn-sm btn-outline-primary me-2">
-                                    <i className="bi bi-pencil-square"></i>
-                                </button>
-                                <button title="Excluir" className="btn btn-sm btn-outline-danger me-2">
-                                    <i className="bi bi-trash3-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        {
+                            movimentacoes.map((mov) =>{
+                                const dataFormatada = new Date(mov.data_movimentacao).toLocaleDateString('pt-BR',{timeZone: 'UTC'});
+                                return(
+                                    <tr key={mov.id} className={mov.tipo === 'saida' ? 'table-danger-subtle' : 'table-success-subtle'}>
+                                        <td>{dataFormatada !== 'Invalid Date' ? dataFormatada : 'Data Inválida'}</td>
+                                        <td>{mov.descricao}</td>
+                                        <td className={`text-end fw-bold ${mov.tipo === 'saida' ? 'text-danger': 'text-success'}`}>
+                                            {mov.tipo === 'saida' ? ' - ' : ' + '} {Number(mov.valor).toLocaleString('pt-BR',{minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                                        </td>
+                                        <td>
+                                            <span className={`badge ${mov.tipo === 'saida' ? 'bg-warning text-dark' : 'bg-success'}`}>
+                                                {mov.tipo.charAt(0).toUpperCase() + mov.tipo.slice(1)}
+                                            </span>
+                                        </td>
+                                        <td>{mov.nome}</td>
+                                        <td>{mov.nome_tipo_pagamento}</td>
+                                        <td className="text-center">
+                                            <button title="Editar" className="btn btn-sm btn-outline-primary me-2" onClick={() => executaEditar(mov)}>
+                                                <i className="bi bi-pencil-square"></i>
+                                            </button>
+                                            <button title="Excluir" className="btn btn-sm btn-outline-danger me-2" onClick={() => executaExcluir(mov.id)}>
+                                                <i className="bi bi-trash3-fill"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
