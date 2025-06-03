@@ -276,18 +276,6 @@ export default function RelatorioMovimentacoes() {
                                 <div className="modal-body">
                                     {editErro && <div className="alert alert-danger">{editErro}</div>}
                                     <div className="mb-3">
-                                        <label htmlFor="data_movimentacao" className="form-label">Data</label>
-                                        <input
-                                            type="date"
-                                            className="form-control"
-                                            id="data_movimentacao"
-                                            name="data_movimentacao"
-                                            value={formDados.data_movimentacao}
-                                            onChange={hadleInputChange}
-                                            required
-                                        />
-                                    </div>
-                                    <div className="mb-3">
                                         <label htmlFor="descricao" className="form-label">Descrição</label>
                                         <input
                                             type="text"
