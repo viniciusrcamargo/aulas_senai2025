@@ -1,0 +1,21 @@
+meta {
+  name: Criar Movimentacoes
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/movimentacoes/adicionar
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "descricao":"Gasto teste2",
+    "valor":"1500",
+    "tipo":"entrada",
+    "id_usuario":"1",
+    "id_tipo_pagamento": "1"
+  }
+}
