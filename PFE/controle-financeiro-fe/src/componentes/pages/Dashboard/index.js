@@ -78,14 +78,6 @@ export default function Dashboard() {
                                     <li><Link className="dropdown-item" to="/relatoriomovimentacao">Relatório</Link></li>
                                 </ul>
                             </div>
-                            <input
-                                type="date"
-                                id="dataMovimentacao"
-                                onChange={(e) => setData(e.target.value)}
-                                value={data}
-                                className="form-control"
-                                required
-                            />
                         </div>
                     </div>
 
