@@ -2,13 +2,22 @@ import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
-import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
-import { Link } from 'react-router-dom'
+
+import { Link, useNavigate } from 'react-router-dom'
 
 const fetchMovimentacoes = async () => {
     try {
-        const resposta = await fetch('http://localhost:3000/movimentacoes/getMovimentacaoUsuarioTipo');
+        const usuarioString = localStorage.getItem('usuario');
+        if (!usuarioString) {
+            console.log('Usuario não encontrado no localStorage');
+            return [];
+        }
+
+        const usuario = JSON.parse(usuarioString);
+        const usuarioId = usuario.id;
+
+        const resposta = await fetch(`http://localhost:3000/movimentacoes/getMovimentacoesPorUsuario/${usuarioId}`);
+
         if (!resposta.ok) {
             throw new Error('Erro ao buscar movimentações');
         }
@@ -28,6 +37,13 @@ export default function Dashboard() {
     const [data, setData] = useState('');
     const [loading, setLoading] = useState(true);
     const [erro, setErro] = useState(null);
+    const navigate = useNavigate();
+
+    const logout = () => {
+        // Limpa o estado e o localStorage
+        localStorage.removeItem('usuario');
+        navigate('/');
+    };
 
     useEffect(() => {
         const carregarMovimentacoes = async () => {
@@ -78,6 +94,11 @@ export default function Dashboard() {
                                     <li><Link className="dropdown-item" to="/relatoriomovimentacao">Relatório</Link></li>
                                 </ul>
                             </div>
+                            <div className="dropdown" style={{ marginRight: '10px' }}>
+                                <button className="btn btn-danger" type="button" onClick={logout}>
+                                    Sair
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -121,23 +142,41 @@ export default function Dashboard() {
                             </thead>
 
                             <tbody>
-                                {movimentacoes.map((mov) => {
-                                    const dataFormatada = new Date(mov.data_movimentacao).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-                                    return (
-                                        <tr key={mov.id} className={mov.tipo === 'saida' ? 'table-danger-subtle' : 'table-success-subtle'}>
-                                            <td>{dataFormatada !== 'Invalid Date' ? dataFormatada : 'Data Inválida'}</td>
-                                            <td>{mov.descricao}</td>
-                                            <td className={`text-start fw-bold ${mov.tipo === 'saida' ? 'text-danger' : 'text-success'}`}>
-                                                {mov.tipo === 'saida' ? '-' : '+'} {Number(mov.valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                                            </td>
-                                            <td>
-                                                <span className={`badge ${mov.tipo === 'saida' ? 'bg-warning text-dark' : 'bg-success'}`}>
-                                                    {mov.tipo.charAt(0).toUpperCase() + mov.tipo.slice(1)}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                {loading ? (
+                                    <tr>
+                                        <td colSpan="4" className="text-center">Carregando movimentações...</td>
+                                    </tr>
+                                ) : erro ? (
+                                    <tr>
+                                        <td colSpan="4" className="text-center text-danger">{erro}</td>
+                                    </tr>
+                                ) : movimentacoes.length === 0 ? ( // <-- AQUI ESTÁ A MUDANÇA CRÍTICA
+                                    <tr>
+                                        <td colSpan="4" className="text-center">
+                                            <div className="alert alert-danger" role="alert">
+                                                Ainda não há movimentações cadastradas
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ) : (
+                                    movimentacoes.map((mov) => {
+                                        const dataFormatada = new Date(mov.data_movimentacao).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+                                        return (
+                                            <tr key={mov.id} className={mov.tipo === 'saida' ? 'table-danger-subtle' : 'table-success-subtle'}>
+                                                <td>{dataFormatada !== 'Invalid Date' ? dataFormatada : 'Data Inválida'}</td>
+                                                <td>{mov.descricao}</td>
+                                                <td className={`text-start fw-bold ${mov.tipo === 'saida' ? 'text-danger' : 'text-success'}`}>
+                                                    {mov.tipo === 'saida' ? '-' : '+'} {Number(mov.valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                                </td>
+                                                <td>
+                                                    <span className={`badge ${mov.tipo === 'saida' ? 'bg-warning text-dark' : 'bg-success'}`}>
+                                                        {mov.tipo.charAt(0).toUpperCase() + mov.tipo.slice(1)}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })
+                                )}
                             </tbody>
                         </table>
                     </div>
