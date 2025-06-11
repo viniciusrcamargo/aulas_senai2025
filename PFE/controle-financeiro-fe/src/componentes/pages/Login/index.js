@@ -30,14 +30,15 @@ export default function Login(){
                 },
                 body: JSON.stringify({email,senha}),//envia dados como json
             });
-            const data = await resposta.json();//lê os dados como JSON
+            const dados = await resposta.json();//lê os dados como JSON
 
             if(resposta.ok){
                 alert('Login bem-sucedido');
-                console.log('Dados da API', data);
+                console.log('Dados da API', dados);
+                localStorage.setItem('usuario', JSON.stringify(dados.usuario));// salva dados usuário localstorage
                 navigate('/dashboard');
             }else{
-                setError(data.message ||'Erro ao fazer Login. Tente novamente');
+                setError(dados.message ||'Erro ao fazer Login. Tente novamente');
             }
 
         }catch(erro){
