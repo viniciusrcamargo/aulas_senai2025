@@ -32,7 +32,6 @@ export default function Dashboard() {
     const [movimentacoes, setMovimentacoes] = useState([]);
     const [totalEntradas, setTotalEntradas] = useState(0);
     const [totalSaida, setTotalSaidas] = useState(0);
-    const [data, setData] = useState('');
     const [loading, setLoading] = useState(true);
     const [erro, setErro] = useState(null);
     const navigate = useNavigate();
