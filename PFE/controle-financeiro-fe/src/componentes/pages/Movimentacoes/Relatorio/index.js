@@ -38,7 +38,16 @@ const atualizarMovimentacaoApi = async (id, dadosMovimentacao) => {
 
 const fetchMovimentacoes = async () => {
     try {
-        const resposta = await fetch('http://localhost:3000/movimentacoes/getMovimentacaoUsuarioTipo');
+        const usuarioString = localStorage.getItem('usuario');
+        if (!usuarioString) {
+            console.log('Usuario não encontrado no localStorage');
+            return [];
+        }
+
+        const usuario = JSON.parse(usuarioString);
+        const usuarioId = usuario.id;
+
+        const resposta = await fetch(`http://localhost:3000/movimentacoes/getMovimentacoesPorUsuario/${usuarioId}`);
         if (!resposta.ok) {
             throw new Error('Erro ao buscar movimentações');
         }

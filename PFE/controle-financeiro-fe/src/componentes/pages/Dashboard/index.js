@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DatePicker from "react-datepicker";
-import 'react-datepicker/dist/react-datepicker.css';
-
 import { Link, useNavigate } from 'react-router-dom'
+
 
 const fetchMovimentacoes = async () => {
     try {
@@ -84,6 +82,9 @@ export default function Dashboard() {
                 <main>
                     <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 className="h2">Dashboard</h1>
+                        {/* {
+                            usuario ? <h5>Bem vindo(a) <i style={{ color: '#F23030' }}>{usuario.nome}</i></h5> : ''
+                        } */}
                         <div className="btn-toolbar mb-2 mb-md-0">
                             <div className="dropdown" style={{ marginRight: '10px' }}>
                                 <button className="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
