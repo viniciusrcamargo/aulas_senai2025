@@ -1,72 +1,73 @@
-import { FontAwesome5, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-import { ScrollView, View, Image, TouchableOpacity, StyleSheet, Text } from "react-native";
+import React from 'react';
+import { ScrollView, View, Text, Image, StyleSheet, Linking, TouchableOpacity } from 'react-native';
+import { MaterialIcons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 
-
-
-export default function Perfil() {
+export default function ProfileScreen() {
     return (
-        <ScrollView style={estilos.container} contentContainerStyle={estilos.conteudo}>
-            <View style={estilos.cabecalhoPerfil}>
+        <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+            <View style={styles.cabecalhoPerfil}>
                 <Image
                     source={{ uri: 'https://randomuser.me/api/portraits/men/32.jpg' }}
-                    style={estilos.avatar}
+                    style={styles.avatar}
                 />
-                <Text style={estilos.nome}>Erik Silva Ando</Text>
-                <Text style={estilos.profissao}>Desenvolvedor React Native</Text>
+                <Text style={styles.nome}>João da Silva</Text>
+                <Text style={styles.profissao}>Desenvolvedor Mobile</Text>
             </View>
 
-            <View>
-                <MaterialIcons name="location-on" size={24} color="#1976D2" />
-                <Text>Rua 25 de Março, 1000, Mirandópolis - SP</Text>
+            <View style={styles.section}>
+                <MaterialIcons name="location-on" size={24} color="#1976D2" style={styles.icon} />
+                <Text style={styles.sectionText}>Rua das Flores, 123 - São Paulo, SP</Text>
             </View>
 
-            <TouchableOpacity>
-                <MaterialIcons name="phone" size={24} color="#1976D2" />
-                <Text>+55 18 997779090</Text>
+            <TouchableOpacity
+                style={styles.section}
+                onPress={() => Linking.openURL('tel:+5511999999999')}
+            >
+                <MaterialIcons name="phone" size={24} color="#1976D2" style={styles.icon} />
+                <Text style={styles.sectionText}>+55 11 99999-9999</Text>
             </TouchableOpacity>
 
-            <View>
-                <MaterialCommunityIcons name="briefcase-outline" size={24} color="#1976D2" />
-                <Text>Experiências</Text>
+            <View style={styles.secaoTitulo}>
+                <MaterialCommunityIcons name="briefcase-outline" size={24} color="#1976D2" style={styles.icon} />
+                <Text style={styles.secaoTituloText}>Experiências</Text>
+            </View>
+            <View style={styles.card}>
+                <Text style={styles.tituloCard}>Desenvolvedor React Native</Text>
+                <Text style={styles.subtituloCard}>Empresa X (2022 - Atual)</Text>
+                <Text style={styles.cardTexto}>Desenvolvimento de aplicativos móveis para Android e iOS, integração com APIs REST, manutenção e evolução de projetos.</Text>
+            </View>
+            <View style={styles.card}>
+                <Text style={styles.tituloCard}>Estagiário de TI</Text>
+                <Text style={styles.subtituloCard}>Empresa Y (2021 - 2022)</Text>
+                <Text style={styles.cardTexto}>Suporte técnico, automação de tarefas e desenvolvimento de scripts internos.</Text>
             </View>
 
-            <View>
-                <Text>Desenvolvedor React</Text>
-                <Text>Empresa - Amazon (2022-Atual)</Text>
-                <Text>Desenvolvi a tela de 404 do app da Amazon.</Text>
+            <View style={styles.secaoTitulo}>
+                <FontAwesome5 name="book-open" size={22} color="#1976D2" style={styles.icon} />
+                <Text style={styles.secaoTituloText}>Cursos</Text>
             </View>
-            <View>
-                <Text>Estagiário de T.I.</Text>
-                <Text>Senai (2024-Atual)</Text>
-                <Text>Ajudei a criar o Kimber e a varrer a sala.</Text>
+            <View style={styles.card}>
+                <Text style={styles.tituloCard}>React Native Avançado</Text>
+                <Text style={styles.subtituloCard}>Alura - 2023</Text>
             </View>
-
-            <View>
-                <FontAwesome5 name="book-open" size={22} color="#1976D2" />
-                <Text>Cursos</Text>
-            </View>
-
-            <View>
-                <Text>React Native no Senai</Text>
-                <Text>2025 - O melhor curso que fiz</Text>
-            </View>
-            <View>
-                <Text>Back end com Raphael</Text>
-                <Text>2025 - Mais ou menos</Text>
+            <View style={styles.card}>
+                <Text style={styles.tituloCard}>JavaScript Moderno</Text>
+                <Text style={styles.subtituloCard}>Udemy - 2022</Text>
             </View>
         </ScrollView>
-    )
+    );
 }
 
-const estilos = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         backgroundColor: '#F5F5F5',
+        flex: 1,
     },
-    conteudo:{
+    content: {
         padding: 20,
-        paddingBottom: 40
+        paddingBottom: 40,
     },
-    cabecalhoPerfil:{
+    cabecalhoPerfil: {
         alignItems: 'center',
         marginBottom: 24,
         backgroundColor: '#fff',
@@ -74,22 +75,22 @@ const estilos = StyleSheet.create({
         padding: 24,
         elevation: 2,
         shadowColor: '#000',
-        shadowOpacity: '0.08',
+        shadowOpacity: 0.08,
         shadowRadius: 8,
-        textShadowOffset: {width: 0, height: 2}
+        shadowOffset: { width: 0, height: 2 },
     },
-    avatar:{
+    avatar: {
         width: 96,
         height: 96,
         borderRadius: 48,
         marginBottom: 12,
         borderWidth: 3,
-        borderColor: '#1976D2'
+        borderColor: '#1976D2',
     },
-    nome:{
+    nome: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#222'
+        color: '#222',
     },
     profissao: {
         fontSize: 16,
@@ -145,4 +146,4 @@ const estilos = StyleSheet.create({
         fontSize: 14,
         color: '#555',
     },
-})
+});
