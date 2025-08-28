@@ -5,7 +5,7 @@ import Principal from './componentes/main';
 export default function Index() {
   return (
     <>
-    <Header titulo="Ap News Senai"/>
+    <Header titulo="App News Senai"/>
     <Principal/>
     </>
   );

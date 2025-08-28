@@ -3,7 +3,7 @@ import { View, Text, FlatList, Image, TouchableOpacity, Linking } from 'react-na
 
 const Principal = () => {
     const [artigos, setArtigos] = useState([]);
-    const API_KEY = ''; // substitua pela sua chave da TheNewsAPI
+    const API_KEY = 'NhbZRki0Q6ZE5quvXSwVDle6z2cfQv4ICFxe3Wmh'; // substitua pela sua chave da TheNewsAPI
 
     useEffect(() => {
         const fetchNews = async () => {
