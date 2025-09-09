@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, useNavigate } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom';
+import GraficoTipoPagto from '../../graficos/TipoPagto';
 
 const fetchMovimentacoes = async () => {
     try {
@@ -41,6 +41,9 @@ export default function Dashboard() {
         localStorage.removeItem('usuario');
         navigate('/');
     };
+
+    const usuarioString = localStorage.getItem('usuario');
+    const usuario = JSON.parse(usuarioString);
 
     useEffect(() => {
         const carregarMovimentacoes = async () => {
@@ -180,7 +183,7 @@ export default function Dashboard() {
                             </tbody>
                         </table>
                     </div>
-
+                        <GraficoTipoPagto id={usuario?.id} />
                 </main>
             </div>
         </div>
