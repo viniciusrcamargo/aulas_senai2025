@@ -33,7 +33,7 @@ export default function Login(){
             const dados = await resposta.json();//lê os dados como JSON
 
             if(resposta.ok){
-                alert('Login bem-sucedido');
+                //alert('Login bem-sucedido');
                 console.log('Dados da API', dados);
                 localStorage.setItem('usuario', JSON.stringify(dados.usuario));// salva dados usuário localstorage
                 navigate('/dashboard');
