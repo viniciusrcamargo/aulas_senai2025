@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate } from 'react-router-dom';
 import GraficoTipoPagto from '../../graficos/TipoPagto';
+import GraficoTipoMovimentacao from '../../graficos/TipoMovimentacao';
 
 const fetchMovimentacoes = async () => {
     try {
@@ -184,6 +185,7 @@ export default function Dashboard() {
                         </table>
                     </div>
                         <GraficoTipoPagto id={usuario?.id} />
+                        <GraficoTipoMovimentacao id={usuario?.id}/>
                 </main>
             </div>
         </div>
