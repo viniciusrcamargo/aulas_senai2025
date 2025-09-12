@@ -1,0 +1,11 @@
+meta {
+  name: Listar Movimentações por usuario
+  type: http
+  seq: 10
+}
+
+get {
+  url: http://localhost:3000/getMovimentacoesPorUsuario/1
+  body: none
+  auth: inherit
+}
