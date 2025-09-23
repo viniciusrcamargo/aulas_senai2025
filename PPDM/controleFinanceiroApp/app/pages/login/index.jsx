@@ -74,6 +74,39 @@ export default function Login(){
                                 textContentType='emailAddress'
                             />
                         </View>
+                        <View style={estilos.formGroup}>
+                            <Text style={estilos.label}>Senha</Text>
+                            <TextInput 
+                                style={estilos.input}
+                                placeholder='Insira a senha'
+                                placeholderTextColor='#cfe1ff'
+                                secureTextEntry
+                                value={senha}
+                                onChangeText={setSenha}
+                                textContentType='password'
+                            />
+                        </View>
+                        {!!erro && (
+                            <View style={estilos.erroBox}>
+                                <Text style={estilos.erroText}>{erro}
+                                </Text>
+                            </View>
+                        )}
+
+                        <TouchableOpacity
+                            style={[estilos.botao, loading && estilos.botaoInativo]}
+                            onPress={execSubmit}
+                            disabled={loading}
+                            activeOpacity={0.8}
+                        >
+                            {
+                                loading ? (
+                                    <ActivityIndicator color="#fff"/>
+                                ) : (
+                                    <Text style={estilos.textoBotao}>Login</Text>
+                                )
+                            }
+                        </TouchableOpacity>
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
