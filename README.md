@@ -4,7 +4,7 @@ Olá queridos estudantes, aqui vocês encontraram os projetos que foram aplicado
 
 ## 1. Configurar o Projeto React
 
-1. **Instalar Node.js**: Certifique-se de que o Node.js está instalado.
+1. **Instalar Node.js**: Certifique-se de que o  está instalado.
 2. **Criar Projeto React**:
    ```bash
    npx create-react-app nome-do-projeto
