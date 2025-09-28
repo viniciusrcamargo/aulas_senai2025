@@ -10,7 +10,7 @@ Olá queridos estudantes, aqui vocês encontraram os projetos que foram aplicado
    npx create-react-app nome-do-projeto
    cd nome-do-projeto
    ```
-3. **Instalar dependencias**:
+3. **Instalar dependências**:
 ```bash
    npm install
 ```
