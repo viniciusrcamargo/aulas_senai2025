@@ -1,4 +1,4 @@
-# Projetos Senai - React com HTML e CSS
+# Projetos Senai - React Web com HTML e CSS
 
 Olá queridos estudantes, aqui vocês encontraram os projetos que foram aplicados em sala de aula
 
