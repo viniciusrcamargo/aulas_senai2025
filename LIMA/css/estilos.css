@@ -1,0 +1,17 @@
+ /* seletor - nome */
+        body{
+            background-color: darkgoldenrod;
+            text-align: center;
+        }
+        /* seletor - id */
+        #imagem{
+            border-radius: 50%;
+        }
+        /* seletor - classe */
+        .quadrado{
+            border: 2px solid #fff;
+            border-radius: 20px;
+            background-color: aliceblue;
+            width: 320px;
+            height: 320px;
+        }
