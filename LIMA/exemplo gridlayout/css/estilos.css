@@ -1,0 +1,30 @@
+body { margin: 0; font-family: Arial, sans-serif; }
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 16px;
+    }
+    .card {
+      background: #f2f2f2;
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .destaque {
+      grid-column: 1 / span 2;
+      grid-row: 1 / span 2;
+      background: #dfe9ff;
+    }
+
+    /* Responsivo: em telas menores, 2 colunas */
+    @media (max-width: 600px) {
+      .galeria {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .destaque {
+        grid-column: auto; /* volta ao fluxo padrão */
+        grid-row: auto;
+      }
+    }
