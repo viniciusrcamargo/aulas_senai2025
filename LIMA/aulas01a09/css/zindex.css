@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Eater&display=swap');
+*{ /*seletor global*/
+    font-family: "Bitcount Ink", system-ui;
+}
+h1{
+    font-family: "Bitcount Ink", system-ui;
+  font-size: 48px;
+}
+
+h2{
+    font-family: "Eater", serif;
+    font-size: 48px;
+}
+
+div{/*seletor8*/
+ border: 2px solid black;
+ box-sizing: border-box;
+ font-family: Arial, Helvetica, sans-serif; 
+ height: 200px;
+ width: 200px;
+ padding: 20px;
+ position: fixed;
+}
+
+
+.box1{
+    background-color: blueviolet;
+}
+
+.box2{
+    background-color: lightcoral;
+    left: 50px;
+    top: 50px;
+    z-index: -1;/*profundidade*/
+    font-family: ;
+}
+.box3{
+    background-color: chartreuse;
+    top: 100px;
+    left: 100px;
+}

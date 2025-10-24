@@ -1,0 +1,32 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1{
+    font-size: 28pt;
+    text-align: center;
+    margin-bottom: 20px;
+    /* margin: 20px 40px 15px 15px; left, top, right e bottom*/
+}
+
+.block{
+    background-color: #eaf490 ;
+    margin-bottom: 20px;
+}
+
+.inline{
+    display: inline;
+    background-color: lightgreen;
+    margin-right: 20px;
+}
+
+.inline-block{
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    margin-right: 15px;
+    background-color: lightcoral;
+}
+
+
