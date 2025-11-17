@@ -1,0 +1,30 @@
+<%- include('../layouts/header.ejs', {titulo: 'Cadastro de Movimentação'})%>
+
+<div>
+    <h2>Cadastro de Movimentação</h2>
+    <form action="/movimentacoes/novo" method="POST">
+        <div>
+            <label for="">Produto:</label>
+            <select name="id_produto" id="id_produto" required>
+                <option value="">Selecione um produto</option>
+                <% produtos.forEach(p => { %>
+                    <option value="<%= p.id_produto %>"><%= p.nome_produto %></option>
+                <% }) %>
+            </select>
+        </div> 
+        <div>
+            <label for="tipo">Tipo:</label>
+            <select name="tipo" id="tipo">
+                <option value="E" selected>Entrada</option>
+                <option value="S">Saida</option>
+            </select>
+        </div>
+        <div>
+            <label for="quantidade">Quantidade</label>
+            <input type="number" name="quantidade" id="quantidade">
+        </div>
+        <button type="submit">Cadastrar</button>
+        <a href="/movimentacoes/listar">Cancelar</a>
+    </form>
+</div>
+<%- include('../layouts/footer.ejs')%>

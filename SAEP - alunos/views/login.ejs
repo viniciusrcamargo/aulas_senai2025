@@ -1,0 +1,15 @@
+<%- include('./layouts/header.ejs', {titulo: 'Acesse o Sistema'})%>
+<div class="container">
+    <form action="/auth/login" method="POST">
+        <div>
+            <label for="email">E-mail</label>
+            <input type="text" name="email" id="email">
+        </div>
+        <div>
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha">
+        </div>
+        <button type="submit">Entrar</button>
+    </form>
+</div>
+<%- include('./layouts/footer.ejs')%>

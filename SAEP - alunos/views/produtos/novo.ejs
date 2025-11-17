@@ -1,0 +1,22 @@
+<%- include('../layouts/header.ejs', {titulo: 'Cadastro de Produto'})%>
+
+<div>
+    <h2>Cadastro de Produto</h2>
+    <form action="/produtos/novo" method="POST">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome">
+        </div>
+        <div>
+            <label for="estoque_minimo">Estoque mínimo</label>
+            <input type="number" name="estoque_minimo" id="estoque_minimo">
+        </div>
+        <div>
+            <label for="quantidade"> Quantidade</label>
+            <input type="number" name="quantidade" id="quantidade">
+        </div>
+        <button type="submit">Cadastrar</button>
+        <a href="/produtos/listar">Cancelar</a>
+    </form>
+</div>
+<%- include('../layouts/footer.ejs')%>

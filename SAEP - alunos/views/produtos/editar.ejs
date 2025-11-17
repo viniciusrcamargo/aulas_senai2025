@@ -1,0 +1,22 @@
+<%- include('../layouts/header.ejs', {titulo: 'Edição de Produto'})%>
+
+<div>
+    <h2>Edição de Produto</h2>
+    <form action="/produtos/editar/<%= p.id_produto %>" method="POST">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" value="<%= p.nome_produto %>">
+        </div>
+        <div>
+            <label for="estoque_minimo">Estoque mínimo</label>
+            <input type="number" name="estoque_minimo" id="estoque_minimo" value="<%= p.estoque_minimo %>">
+        </div>
+        <div>
+            <label for="quantidade"> Quantidade</label>
+            <input type="number" name="quantidade" id="quantidade" value="<%= p.quantidade %>">
+        </div>
+        <button type="submit">Editar</button>
+        <a href="/produtos/listar">Cancelar</a>
+    </form>
+</div>
+<%- include('../layouts/footer.ejs')%>
