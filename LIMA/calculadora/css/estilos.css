@@ -1,0 +1,86 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+label {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin: 0 25px;
+  color: #fff;
+}
+
+
+body {
+    /* Gradiente de cor de fundo */
+    background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+    font-family: Arial, sans-serif;
+}
+
+main {
+    /* Centralizando os elementos na tela */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+
+    /* Borda na tag main */
+    border: 5px solid #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.container {
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+}
+
+.container input {
+    color: #1a2a6c;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.container button {
+    text-decoration: none;
+    font-size: 18pt;
+    width: 105px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    background-color: #1a2a6c;
+    color: #ffffff;
+    border-radius: 15px;
+} 
+
+.container button:hover{
+    transform: scale(1.1);
+}
+
+#result{
+    color: #fff;
+    font-size: large;
+}
+
