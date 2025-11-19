@@ -6,10 +6,10 @@ const router = express.Router();
 // Gestão de estoque
 router.get('/listar', async (req, res) => {
    const { busca } = req.query;
-   let sql = "SELECT m.id_mov, m.tipo, m.quantidade, m.data_cadastro, p.nome_produto, p.quantidade as qtde_produto FROM movimentacoes m LEFT JOIN produtos p on m.id_produto = p.id_produto";
+   let sql = "SELECT m.id_mov, m.tipo, m.quantidade, m.data_cadastro, p.nome_produto, p.quantidade as qtde_produto FROM movimentacoes m LEFT JOIN produtos p on m.id_produto = p.id_produto WHERE m.ativo = true";
   let params = [];
   if (busca) {
-    sql += " WHERE p.nome_produto ILIKE $1";
+    sql += " AND p.nome_produto ILIKE $1";
     params.push(`%${busca}%`);
   }
   sql += " ORDER BY p.nome_produto ASC";
@@ -18,7 +18,7 @@ router.get('/listar', async (req, res) => {
 });
 
 router.get('/novo', async (req, res) => {
-  const produtos = await bd.query("SELECT * FROM produtos ORDER BY nome_produto ASC");
+  const produtos = await bd.query("SELECT * FROM produtos WHERE ativo = true ORDER BY nome_produto ASC");
   res.render('movimentacoes/novo', { usuario: req.session.user, produtos: produtos.rows });
 });
 
