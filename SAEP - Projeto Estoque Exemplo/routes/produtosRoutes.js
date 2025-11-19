@@ -6,10 +6,10 @@ const router = express.Router();
 // Produtos CRUD + busca
 router.get('/listar', async (req, res) => {
   const { busca } = req.query;
-  let sql = "SELECT * FROM produtos";
+  let sql = "SELECT * FROM produtos WHERE ativo = true";
   let params = [];
   if (busca) {
-    sql += " WHERE nome_produto ILIKE $1";
+    sql += "  nome_produto ILIKE $1 AND ";
     params.push(`%${busca}%`);
   }
   sql += " ORDER BY nome_produto ASC";
@@ -47,7 +47,8 @@ router.post('/editar/:id', async (req, res) => {
 
 router.post('/excluir/:id', async (req, res) => {
   const {id}  = req.params;
-  await bd.query("DELETE FROM produtos WHERE id_produto = $1", [parseInt(id)]);
+  await bd.query("UPDATE produtos SET ativo = false WHERE id_produto = $1", [parseInt(id)]);
+  await bd.query("UPDATE movimentacoes SET ativo = false WHERE id_produto = $1", [parseInt(id)]);
   res.redirect('/produtos/listar');
 });
 
