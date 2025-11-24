@@ -1,0 +1,85 @@
+:root{
+    --bg: #f8fafc;
+    --card: #fff;
+    --texto: #334155;
+    --muted: #64748b;
+    --primaria: #0ea5e9;
+    --ring: #e2e8f0;
+    --shadow: rgba(0,0,0,0.08);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.cabecalho, .rodape{
+    padding: 16px;
+    text-align: center;
+}
+
+.cabecalho h1{
+    margin: 8px 0;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.rodape small{
+    color: var(--muted);
+}
+
+.container{
+    width: min(1100px, 92%);
+    margin: 0 auto 32px;
+}
+
+.grid{
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+    .grid{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.card{
+    background-color: rgba(255,255,256,0.6);
+    border: 1px solid var(--ring);
+    border-radius: 14px;
+    box-shadow: 0 6px 18px var(--shadow);
+    padding: 16px;
+    overflow: hidden;
+}
+
+.card h2{
+    margin: 0 0 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+.card--full{
+    grid-column: 1 / -1;
+}
+.canvas-wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+canvas{
+    width: 100% !important;
+    height: auto !important;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.pageData = <%- JSON.stringify(data || {}) %>;
+    </script>
+    <script src="/js/graficos.js" defer></script>
+    <title>Aula sobre Gráficos</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <h1><%= titulo %></h1>
+    </header>
+
+    <main class="container">
+        <section class="grid">
+            <div class="card">
+                <h2>Vendas por mês</h2>
+                <div class="canvas-wrapper">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Vendas por produto</h2>
+                <div class="canvas-wrapper">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card card--full">
+                <h2>Dispositivos</h2>
+                <div class="canvas-wrapper">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <small>Graficos de vendas - Senai 2025 ⚠️</small>
+    </footer>
+    
+</body>
+</html>
