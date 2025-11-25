@@ -1,0 +1,88 @@
+ /* ====== CSS: Estilo básico do carrossel ====== */
+    :root {
+      --btn-bg: rgba(0, 0, 0, 0.4);   /* fundo semi-transparente */
+      --btn-bg-hover: rgba(0, 0, 0, 0.6);
+      --btn-color: #fff;
+      --radius: 12px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 24px; background: #f7f7f8; color: #111; }
+
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 { font-size: 1.6rem; margin: 0 0 12px; }
+    p { margin: 6px 0 16px; color: #444; }
+
+    .carossel {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9; /* mantém proporção responsiva */
+      background: #ddd;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      user-select: none;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* preenche sem distorcer muito */
+      display: block;
+    }
+
+    /* Botões de navegação com opacidade */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: var(--btn-bg);
+      color: var(--btn-color);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      place-items: center;
+      cursor: pointer;
+      transition: background 0.2s ease, opacity 0.2s ease;
+      opacity: 0.9; /* leve opacidade no estado normal */
+    }
+
+    .nav-btn:hover { background: var(--btn-bg-hover); opacity: 1; }
+    .nav-btn:active { transform: translateY(-50%) scale(0.97); }
+
+    .prev { left: 12px; }
+    .next { right: 12px; }
+
+    /* Ícones simples usando CSS (triângulos) */
+    .nav-btn span {
+      display: inline-block;
+      width: 0; height: 0;
+      border-style: solid;
+    }
+    .prev span {
+      border-width: 8px 12px 8px 0;
+      border-color: transparent var(--btn-color) transparent transparent;
+    }
+    .next span {
+      border-width: 8px 0 8px 12px;
+      border-color: transparent transparent transparent var(--btn-color);
+    }
+
+    /* Dots (opcional) */
+    .pontos {
+      position: absolute;
+      left: 0; right: 0; bottom: 10px;
+      display: flex; gap: 8px; justify-content: center;
+    }
+    .ponto {
+      width: 13px; height: 13px; border-radius: 60px;
+      background: rgba(255,255,255,0.7);
+      outline: 1px solid rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .ponto.active { background: #4e4747; }
+
+    /* Acessibilidade visual ao focar por teclado */
+    .nav-btn:focus-visible { outline: 3px solid #80bfff; outline-offset: 2px; }

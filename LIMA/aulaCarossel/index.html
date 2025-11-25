@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/estilos.css">
+  <script src="./js/carrosel.js" defer></script>
+  <title>Carrossel Simples</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Carrossel de Imagens (Troca instantânea)</h1>
+    <p>Use os botões para avançar e retroceder. A troca é imediata, sem animações.</p>
+
+    <div class="carossel" aria-label="Galeria de imagens" aria-live="polite">
+      <img id="slide" src="https://placehold.co/1080x500?text=Imagem+1" alt="Imagem 1" />
+
+      <button class="nav-btn prev" title="Anterior">
+        <span></span>
+      </button>
+      <button class="nav-btn next"  title="Próximo">
+        <span></span>
+      </button>
+
+      <div class="pontos" aria-hidden="true"></div>
+    </div>
+  </div>
+</body>
+</html>
