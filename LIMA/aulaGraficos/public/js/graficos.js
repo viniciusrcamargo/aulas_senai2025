@@ -21,7 +21,7 @@
         new Chart(graficoLinha, {
             type: 'line',
             data: {
-                label: line.labels,
+                labels: line.labels,
                 datasets: [{
                     label: 'Vendas',
                     data: line.values,
@@ -57,7 +57,7 @@
         new Chart(graficoBarra, {
             type: 'bar',
             data: {
-                label: bar.labels,
+                labels: bar.labels,
                 datasets: [{
                     label: 'Quantidade',
                     data: bar.values,
@@ -89,7 +89,7 @@
         new Chart(graficoTorta, {
             type: 'pie',
             data: {
-                label: pie.labels,
+                labels: pie.labels,
                 datasets: [{
                     label: 'Quantidade',
                     data: pie.values,
